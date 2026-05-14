@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: bank-copilot_front_postgres_demo
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bank_copilot_front
+    ports:
+      - "5433:5432"
+    volumes:
+      - front_pg_data:/var/lib/postgresql/data
+
+volumes:
+  front_pg_data:
