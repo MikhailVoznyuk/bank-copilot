@@ -1,6 +1,5 @@
 import "dotenv/config";
 import crypto from "crypto";
-import { PrismaPg } from "@prisma/adapter-pg";
 import { prisma} from "@/shared/db/prisma";
 import { Role, Status } from "@/generated/prisma/enums";
 
