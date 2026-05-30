@@ -1,4 +1,4 @@
-export type Role = 'user' | 'operator';
+export type Role = 'client' | 'operator';
 export type Status = 'basic' | 'privilege' | 'premier' | 'private';
 
 export type User = {
@@ -7,7 +7,7 @@ export type User = {
     role: Role;
     actorId: string;
     firstName: string;
-    middleName: string;
+    middleName: string | null;
     lastName: string;
-    status: Status;
+    status: Status | null;
 }

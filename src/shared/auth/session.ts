@@ -1,10 +1,11 @@
 import { cookies} from "next/headers";
 import crypto from "crypto";
+import type { User, Role } from "@/entities/user/model/types";
 
 export type SessionPayload = {
     userId: string;
     actorId: string;
-    role: "client" | "operator";
+    role: Role;
     login: string;
     firstName: string;
     lastName: string;
