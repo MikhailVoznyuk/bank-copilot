@@ -30,18 +30,18 @@ export async function POST(request: Request) {
     try {
         body = await request.json();
     } catch (error) {
-        return NextResponse.json({
-            message: "Некорректный JSON",
-            status: 400
-        })
+        return NextResponse.json(
+            {message: "Некорректный JSON"},
+            {status: 400}
+        )
     }
     const parsed = loginSchema.safeParse(body);
 
     if (!parsed.success) {
-        return NextResponse.json({
-            message: "Некорректные данные для ввода",
-            status: 422,
-        })
+        return NextResponse.json(
+            {message: "Некорректные данные для ввода"},
+            {status: 422}
+        )
     }
 
     const {login, password} = parsed.data;
@@ -51,19 +51,19 @@ export async function POST(request: Request) {
     })
 
     if (!user) {
-        return NextResponse.json({
-            message: "Неверный логин или пароль",
-            status: 401
-        })
+        return NextResponse.json(
+            {message: "Неверный логин или пароль"},
+            {status: 401}
+        )
     }
 
     const isValidPassword = verifyPassword(password, user.passwordHash);
 
     if (!isValidPassword) {
-        return NextResponse.json({
-            message: "Неверный логин или пароль",
-            status: 401
-        })
+        return NextResponse.json(
+            {message: "Неверный логин или пароль"},
+            {status: 401}
+        )
     }
 
     const safeUser = toSafeUser(user);
